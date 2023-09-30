@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel5 = new System.Windows.Forms.Panel();
             this.girisSilButton = new System.Windows.Forms.Button();
             this.araButton = new System.Windows.Forms.Button();
@@ -42,6 +42,10 @@
             this.girisAd_txt = new System.Windows.Forms.TextBox();
             this.girisButton = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.miktarDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.adDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.aciklamaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tarihDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.girisTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.kasaDataSet = new Modern_Dashboard_Design.KasaDataSet();
             this.label12 = new System.Windows.Forms.Label();
@@ -57,31 +61,28 @@
             this.cikisAd_txt = new System.Windows.Forms.TextBox();
             this.cikisButton = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.miktarDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.adDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.aciklamaDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tarihDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cikisTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.kasaDataSet1 = new Modern_Dashboard_Design.KasaDataSet1();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.kasaTutar_lbl = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.kasaCikis_lbl = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.kasaGiris_lbl = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.girisTableTableAdapter = new Modern_Dashboard_Design.KasaDataSetTableAdapters.GirisTableTableAdapter();
             this.cikisTableTableAdapter = new Modern_Dashboard_Design.KasaDataSet1TableAdapters.CikisTableTableAdapter();
             this.button1 = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.miktarDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.adDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.aciklamaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tarihDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.miktarDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.adDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.aciklamaDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tarihDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.yazdir_Button = new System.Windows.Forms.Button();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.girisTableBindingSource)).BeginInit();
@@ -91,10 +92,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.cikisTableBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kasaDataSet1)).BeginInit();
             this.panel7.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
@@ -190,14 +191,14 @@
             // 
             // girisMiktar_txt
             // 
-            this.girisMiktar_txt.Location = new System.Drawing.Point(26, 76);
+            this.girisMiktar_txt.Location = new System.Drawing.Point(26, 77);
             this.girisMiktar_txt.Name = "girisMiktar_txt";
             this.girisMiktar_txt.Size = new System.Drawing.Size(100, 20);
             this.girisMiktar_txt.TabIndex = 5;
             // 
             // girisAd_txt
             // 
-            this.girisAd_txt.Location = new System.Drawing.Point(144, 76);
+            this.girisAd_txt.Location = new System.Drawing.Point(144, 77);
             this.girisAd_txt.Name = "girisAd_txt";
             this.girisAd_txt.Size = new System.Drawing.Size(100, 20);
             this.girisAd_txt.TabIndex = 4;
@@ -222,15 +223,15 @@
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoGenerateColumns = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.miktarDataGridViewTextBoxColumn,
@@ -244,6 +245,42 @@
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.Size = new System.Drawing.Size(583, 263);
             this.dataGridView1.TabIndex = 2;
+            // 
+            // miktarDataGridViewTextBoxColumn
+            // 
+            this.miktarDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.miktarDataGridViewTextBoxColumn.DataPropertyName = "miktar";
+            this.miktarDataGridViewTextBoxColumn.HeaderText = "Miktar";
+            this.miktarDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.miktarDataGridViewTextBoxColumn.Name = "miktarDataGridViewTextBoxColumn";
+            this.miktarDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // adDataGridViewTextBoxColumn
+            // 
+            this.adDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.adDataGridViewTextBoxColumn.DataPropertyName = "ad";
+            this.adDataGridViewTextBoxColumn.HeaderText = "Ad";
+            this.adDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.adDataGridViewTextBoxColumn.Name = "adDataGridViewTextBoxColumn";
+            this.adDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // aciklamaDataGridViewTextBoxColumn
+            // 
+            this.aciklamaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.aciklamaDataGridViewTextBoxColumn.DataPropertyName = "aciklama";
+            this.aciklamaDataGridViewTextBoxColumn.HeaderText = "Açıklama";
+            this.aciklamaDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.aciklamaDataGridViewTextBoxColumn.Name = "aciklamaDataGridViewTextBoxColumn";
+            this.aciklamaDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // tarihDataGridViewTextBoxColumn
+            // 
+            this.tarihDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.tarihDataGridViewTextBoxColumn.DataPropertyName = "tarih";
+            this.tarihDataGridViewTextBoxColumn.HeaderText = "Tarih";
+            this.tarihDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.tarihDataGridViewTextBoxColumn.Name = "tarihDataGridViewTextBoxColumn";
+            this.tarihDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // girisTableBindingSource
             // 
@@ -401,15 +438,15 @@
             this.dataGridView2.AllowUserToDeleteRows = false;
             this.dataGridView2.AllowUserToOrderColumns = true;
             this.dataGridView2.AutoGenerateColumns = false;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.miktarDataGridViewTextBoxColumn1,
@@ -423,6 +460,42 @@
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.Size = new System.Drawing.Size(565, 257);
             this.dataGridView2.TabIndex = 1;
+            // 
+            // miktarDataGridViewTextBoxColumn1
+            // 
+            this.miktarDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.miktarDataGridViewTextBoxColumn1.DataPropertyName = "miktar";
+            this.miktarDataGridViewTextBoxColumn1.HeaderText = "Miktar";
+            this.miktarDataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.miktarDataGridViewTextBoxColumn1.Name = "miktarDataGridViewTextBoxColumn1";
+            this.miktarDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // adDataGridViewTextBoxColumn1
+            // 
+            this.adDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.adDataGridViewTextBoxColumn1.DataPropertyName = "ad";
+            this.adDataGridViewTextBoxColumn1.HeaderText = "Ad";
+            this.adDataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.adDataGridViewTextBoxColumn1.Name = "adDataGridViewTextBoxColumn1";
+            this.adDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // aciklamaDataGridViewTextBoxColumn1
+            // 
+            this.aciklamaDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.aciklamaDataGridViewTextBoxColumn1.DataPropertyName = "aciklama";
+            this.aciklamaDataGridViewTextBoxColumn1.HeaderText = "Açıklama";
+            this.aciklamaDataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.aciklamaDataGridViewTextBoxColumn1.Name = "aciklamaDataGridViewTextBoxColumn1";
+            this.aciklamaDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // tarihDataGridViewTextBoxColumn1
+            // 
+            this.tarihDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.tarihDataGridViewTextBoxColumn1.DataPropertyName = "tarih";
+            this.tarihDataGridViewTextBoxColumn1.HeaderText = "Tarih";
+            this.tarihDataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.tarihDataGridViewTextBoxColumn1.Name = "tarihDataGridViewTextBoxColumn1";
+            this.tarihDataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // cikisTableBindingSource
             // 
@@ -444,6 +517,16 @@
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(318, 130);
             this.panel7.TabIndex = 8;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::Modern_Dashboard_Design.Properties.Resources.money_bag;
+            this.pictureBox2.Location = new System.Drawing.Point(218, 37);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(86, 78);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 2;
+            this.pictureBox2.TabStop = false;
             // 
             // kasaTutar_lbl
             // 
@@ -477,6 +560,16 @@
             this.panel4.Size = new System.Drawing.Size(304, 130);
             this.panel4.TabIndex = 9;
             // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::Modern_Dashboard_Design.Properties.Resources._7738819;
+            this.pictureBox3.Location = new System.Drawing.Point(206, 37);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(82, 78);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 2;
+            this.pictureBox3.TabStop = false;
+            // 
             // kasaCikis_lbl
             // 
             this.kasaCikis_lbl.AutoSize = true;
@@ -508,6 +601,16 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(290, 130);
             this.panel3.TabIndex = 10;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::Modern_Dashboard_Design.Properties.Resources.Earning_PNG_Photo;
+            this.pictureBox4.Location = new System.Drawing.Point(200, 37);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(86, 78);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox4.TabIndex = 5;
+            this.pictureBox4.TabStop = false;
             // 
             // kasaGiris_lbl
             // 
@@ -552,107 +655,20 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // pictureBox2
+            // yazdir_Button
             // 
-            this.pictureBox2.Image = global::Modern_Dashboard_Design.Properties.Resources.money_bag;
-            this.pictureBox2.Location = new System.Drawing.Point(218, 37);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(86, 78);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 2;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::Modern_Dashboard_Design.Properties.Resources._7738819;
-            this.pictureBox3.Location = new System.Drawing.Point(206, 37);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(82, 78);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 2;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Image = global::Modern_Dashboard_Design.Properties.Resources.Earning_PNG_Photo;
-            this.pictureBox4.Location = new System.Drawing.Point(200, 37);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(86, 78);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox4.TabIndex = 5;
-            this.pictureBox4.TabStop = false;
-            // 
-            // miktarDataGridViewTextBoxColumn
-            // 
-            this.miktarDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.miktarDataGridViewTextBoxColumn.DataPropertyName = "miktar";
-            this.miktarDataGridViewTextBoxColumn.HeaderText = "Miktar";
-            this.miktarDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.miktarDataGridViewTextBoxColumn.Name = "miktarDataGridViewTextBoxColumn";
-            this.miktarDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // adDataGridViewTextBoxColumn
-            // 
-            this.adDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.adDataGridViewTextBoxColumn.DataPropertyName = "ad";
-            this.adDataGridViewTextBoxColumn.HeaderText = "Ad";
-            this.adDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.adDataGridViewTextBoxColumn.Name = "adDataGridViewTextBoxColumn";
-            this.adDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // aciklamaDataGridViewTextBoxColumn
-            // 
-            this.aciklamaDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.aciklamaDataGridViewTextBoxColumn.DataPropertyName = "aciklama";
-            this.aciklamaDataGridViewTextBoxColumn.HeaderText = "Açıklama";
-            this.aciklamaDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.aciklamaDataGridViewTextBoxColumn.Name = "aciklamaDataGridViewTextBoxColumn";
-            this.aciklamaDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // tarihDataGridViewTextBoxColumn
-            // 
-            this.tarihDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.tarihDataGridViewTextBoxColumn.DataPropertyName = "tarih";
-            this.tarihDataGridViewTextBoxColumn.HeaderText = "Tarih";
-            this.tarihDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.tarihDataGridViewTextBoxColumn.Name = "tarihDataGridViewTextBoxColumn";
-            this.tarihDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // miktarDataGridViewTextBoxColumn1
-            // 
-            this.miktarDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.miktarDataGridViewTextBoxColumn1.DataPropertyName = "miktar";
-            this.miktarDataGridViewTextBoxColumn1.HeaderText = "Miktar";
-            this.miktarDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.miktarDataGridViewTextBoxColumn1.Name = "miktarDataGridViewTextBoxColumn1";
-            this.miktarDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // adDataGridViewTextBoxColumn1
-            // 
-            this.adDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.adDataGridViewTextBoxColumn1.DataPropertyName = "ad";
-            this.adDataGridViewTextBoxColumn1.HeaderText = "Ad";
-            this.adDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.adDataGridViewTextBoxColumn1.Name = "adDataGridViewTextBoxColumn1";
-            this.adDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // aciklamaDataGridViewTextBoxColumn1
-            // 
-            this.aciklamaDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.aciklamaDataGridViewTextBoxColumn1.DataPropertyName = "aciklama";
-            this.aciklamaDataGridViewTextBoxColumn1.HeaderText = "Açıklama";
-            this.aciklamaDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.aciklamaDataGridViewTextBoxColumn1.Name = "aciklamaDataGridViewTextBoxColumn1";
-            this.aciklamaDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // tarihDataGridViewTextBoxColumn1
-            // 
-            this.tarihDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.tarihDataGridViewTextBoxColumn1.DataPropertyName = "tarih";
-            this.tarihDataGridViewTextBoxColumn1.HeaderText = "Tarih";
-            this.tarihDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.tarihDataGridViewTextBoxColumn1.Name = "tarihDataGridViewTextBoxColumn1";
-            this.tarihDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.yazdir_Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(42)))), ((int)(((byte)(64)))));
+            this.yazdir_Button.FlatAppearance.BorderSize = 0;
+            this.yazdir_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.yazdir_Button.Font = new System.Drawing.Font("Bahnschrift SemiBold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.yazdir_Button.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.yazdir_Button.Location = new System.Drawing.Point(605, 617);
+            this.yazdir_Button.Name = "yazdir_Button";
+            this.yazdir_Button.Size = new System.Drawing.Size(115, 42);
+            this.yazdir_Button.TabIndex = 27;
+            this.yazdir_Button.Text = "Yazdır";
+            this.yazdir_Button.UseVisualStyleBackColor = false;
+            this.yazdir_Button.Click += new System.EventHandler(this.yazdir_Button_Click);
             // 
             // frmDashboard
             // 
@@ -660,6 +676,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(1323, 671);
+            this.Controls.Add(this.yazdir_Button);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel6);
@@ -670,6 +687,7 @@
             this.Name = "frmDashboard";
             this.Text = "frmDashboard";
             this.Load += new System.EventHandler(this.frmDashboard_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmDashboard_KeyDown);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -682,12 +700,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.kasaDataSet1)).EndInit();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
 
@@ -746,5 +764,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn adDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn aciklamaDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn tarihDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.Button yazdir_Button;
     }
 }

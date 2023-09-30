@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -268,6 +269,174 @@ namespace Modern_Dashboard_Design
                 MessageBox.Show("Lütfen Bir Satır Seçin!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             VerileriGoster();
+        }
+
+        private void PrintGiris()
+        {
+            // Veritabanı bağlantı dizesini ayarlayın
+            string connectionString = "Data Source=FURKAN\\SQLEXPRESS;Initial Catalog = Kasa; Integrated Security = True";
+
+            // Yazdırma işlemi için gerekli nesneleri oluşturun
+            PrintDocument printDocument = new PrintDocument();
+            printDocument.PrintPage += new PrintPageEventHandler((sender, e) => PrintPage(sender, e, connectionString, "GirisTable")); // Tablo adını belirtin
+
+            // Yazdırma işlemini başlatın
+            PrintDialog printDialog = new PrintDialog();
+            if (printDialog.ShowDialog() == DialogResult.OK)
+            {
+                printDocument.Print();
+            }
+        }
+
+        private void PrintCikis()
+        {
+            // Veritabanı bağlantı dizesini ayarlayın
+            string connectionString = "Data Source=FURKAN\\SQLEXPRESS;Initial Catalog = Kasa; Integrated Security = True";
+
+            // Yazdırma işlemi için gerekli nesneleri oluşturun
+            PrintDocument printDocument = new PrintDocument();
+            printDocument.PrintPage += new PrintPageEventHandler((sender, e) => PrintPage(sender, e, connectionString, "CikisTable")); // Tablo adını belirtin
+
+            // Yazdırma işlemini başlatın
+            PrintDialog printDialog = new PrintDialog();
+            if (printDialog.ShowDialog() == DialogResult.OK)
+            {
+                printDocument.Print();
+            }
+        }
+
+        private void PrintFis()
+        {
+            // Veritabanı bağlantı dizesini ayarlayın
+            string connectionString = "Data Source=FURKAN\\SQLEXPRESS;Initial Catalog = Kasa; Integrated Security = True";
+
+            // Yazdırma işlemi için gerekli nesneleri oluşturun
+            PrintDocument printDocument = new PrintDocument();
+            printDocument.PrintPage += new PrintPageEventHandler((sender, e) => PrintPage(sender, e, connectionString, "FisTable")); // Tablo adını belirtin
+
+            // Yazdırma işlemini başlatın
+            PrintDialog printDialog = new PrintDialog();
+            if (printDialog.ShowDialog() == DialogResult.OK)
+            {
+                printDocument.Print();
+            }
+        }
+
+        private void PrintKisi()
+        {
+            // Veritabanı bağlantı dizesini ayarlayın
+            string connectionString = "Data Source=FURKAN\\SQLEXPRESS;Initial Catalog = Kasa; Integrated Security = True";
+
+            // Yazdırma işlemi için gerekli nesneleri oluşturun
+            PrintDocument printDocument = new PrintDocument();
+            printDocument.PrintPage += new PrintPageEventHandler((sender, e) => PrintPage(sender, e, connectionString, "KisiTable")); // Tablo adını belirtin
+
+            // Yazdırma işlemini başlatın
+            PrintDialog printDialog = new PrintDialog();
+            if (printDialog.ShowDialog() == DialogResult.OK)
+            {
+                printDocument.Print();
+            }
+        }
+
+        private void PrintPage(object sender, PrintPageEventArgs e, string connectionString, string tableName)
+        {
+            // Yazdırma işlemi için kullanılacak grafik nesnesini alın.
+            Graphics graphics = e.Graphics;
+
+            // Yazdırma işlemi sırasında kullanılacak yazı fontunu belirleyin.
+            Font font = new Font("Bahnscrift", 12);
+
+            // Yazdırma işlemi sırasında kullanılacak metin rengini belirleyin.
+            SolidBrush brush = new SolidBrush(Color.Black);
+
+            // Yazdırma işlemi sırasında kullanılacak metin başlangıç noktasını belirleyin.
+            float startX = 10;
+            float startY = 10;
+
+            // Veritabanından sütun başlıklarını okuyarak yazdırın.
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                DateTime selectedDate = dateTimePicker1.Value;
+                string query = $"SELECT * FROM {tableName} WHERE CONVERT(date, tarih) = @SelectedDate";
+                
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@SelectedDate", selectedDate.Date);
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        // Sütun başlıklarını yazdırın
+                        for (int i = 0; i < reader.FieldCount; i++)
+                        {
+                            string headerToPrint = reader.GetName(i); // Sütun adını alın
+
+                            graphics.DrawString(headerToPrint.ToUpper(), font, brush, startX, startY);
+                            startX += 115; // Sütunları ayırmak için 150 birim ilerleyin.
+                        }
+
+                        startY += 20; // Başlık satırını yazdırdıktan sonra alt satıra geçin
+                        startX = 10; // Sütun başına geri dönün.
+
+                        // Verileri yazdırmadan önce bir satır boşluk bırakın
+                        startY += 20;
+
+                        // Verileri okuyarak yazdırın
+                        while (reader.Read())
+                        {
+                            for (int i = 0; i < reader.FieldCount; i++)
+                            {
+                                string dataToPrint = reader[i].ToString();
+                                graphics.DrawString(dataToPrint, font, brush, startX, startY);
+                                startX += 115; // Sütunları ayırmak için 150 birim ilerleyin.
+                            }
+                            startY += 20; // Alt satıra geçmek için 20 birim ilerleyin.
+                            startX = 10; // Sütun başına geri dönün.
+
+                        }
+                    }
+                }
+            }
+
+            // Herhangi bir sayfa daha kalmadığını belirtin.
+            e.HasMorePages = false;
+
+            // Kullanılan nesneleri temizleyin.
+            font.Dispose();
+            brush.Dispose();
+        }
+        private void yazdir_Button_Click(object sender, EventArgs e)
+        {
+            
+            // Seçilen veritabanını alın
+            if(database_comboBox.SelectedItem == null)
+            {
+                MessageBox.Show("Lütfen Seçeneklerden Birini Seçiniz!", "Uyarı", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            else
+            {
+                string selectedDatabase = database_comboBox.SelectedItem.ToString(); // ComboBox kullanıyorsanız
+
+                // Seçilen veritabanına göre yazdırma işlemini başlatın
+                if (selectedDatabase == "Kasa Giriş")
+                {
+                    PrintGiris();
+                }
+                else if (selectedDatabase == "Kasa Çıkış")
+                {
+                    PrintCikis();
+                }
+                else if (selectedDatabase == "Fiş")
+                {
+                    PrintFis();
+                }
+                else if (selectedDatabase == "Kişi")
+                {
+                    PrintKisi();
+                }
+            }
+            
         }
     }
 }

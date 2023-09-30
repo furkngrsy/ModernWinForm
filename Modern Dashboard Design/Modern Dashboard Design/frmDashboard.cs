@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,6 +27,10 @@ namespace Modern_Dashboard_Design
 
         private void frmDashboard_Load(object sender, EventArgs e)
         {
+            girisMiktar_txt.TabIndex = 0;
+            girisAd_txt.TabIndex = 1;
+            girisAciklama_txt.TabIndex = 2;
+            girisButton.TabIndex = 3;
 
         }
 
@@ -185,7 +190,7 @@ namespace Modern_Dashboard_Design
                 kasaTutar_lbl.Text = kasa.ToString() + " TL";
             }
             con.Close();
-            return kasa;
+            return giris-cikis;
             
         }
      
@@ -521,6 +526,175 @@ namespace Modern_Dashboard_Design
             VerileriGoster();
             Temizle();
             KasaHesapla();
+        }
+
+        /*private void PrintGiris()
+        {
+            // Veritabanı bağlantı dizesini ayarlayın
+            string connectionString = "Data Source=FURKAN\\SQLEXPRESS;Initial Catalog = Kasa; Integrated Security = True";
+
+            // Yazdırma işlemi için gerekli nesneleri oluşturun
+            PrintDocument printDocument = new PrintDocument();
+            printDocument.PrintPage += new PrintPageEventHandler((sender, e) => PrintPage(sender, e, connectionString, "GirisTable")); // Tablo adını belirtin
+
+            // Yazdırma işlemini başlatın
+            PrintDialog printDialog = new PrintDialog();
+            if (printDialog.ShowDialog() == DialogResult.OK)
+            {
+                printDocument.Print();
+            }
+        }*/
+        private void PrintCikis()
+        {
+            // Yazdırma işlemi için gerekli nesneleri oluşturun
+            PrintDocument printDocument = new PrintDocument();
+            printDocument.PrintPage += new PrintPageEventHandler(PrintPage); // PrintPage işleyicisini doğrudan çağırın
+
+            // Yazdırma işlemini başlatın
+            PrintDialog printDialog = new PrintDialog();
+            if (printDialog.ShowDialog() == DialogResult.OK)
+            {
+                printDocument.Print();
+            }
+        }
+
+        private void PrintPage(object sender, PrintPageEventArgs e)
+        {
+            // Yazdırma işlemi için kullanılacak grafik nesnesini alın.
+            Graphics graphics = e.Graphics;
+
+            // Yazdırma işlemi sırasında kullanılacak yazı fontunu belirleyin.
+            Font font = new Font("Bahnscrift", 12);
+
+            // Yazdırma işlemi sırasında kullanılacak metin rengini belirleyin.
+            SolidBrush brush = new SolidBrush(Color.Black);
+
+            // Yazdırma işlemi sırasında kullanılacak metin başlangıç noktasını belirleyin.
+            float startX = 10;
+            float startY = 10;
+
+            // Veritabanından sütun başlıklarını okuyarak yazdırın.
+            using (SqlConnection connection = new SqlConnection("Data Source=FURKAN\\SQLEXPRESS;Initial Catalog = Kasa; Integrated Security = True"))
+            {
+                connection.Open();
+                string query = @"SELECT * FROM GirisTable WHERE CAST(tarih AS DATE) = CAST(GETDATE() AS DATE)";   
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        // Sütun başlıklarını yazdırın
+                        graphics.DrawString("------ Giriş Tablosu ------", font, brush, startX, startY);
+                        startY +=40; // Başlık satırını yazdırdıktan sonra alt satıra geçin
+                        startX = 10; // Sütun başına geri dönün.
+                        for (int i = 0; i < reader.FieldCount; i++)
+                        {
+                            string headerToPrint = reader.GetName(i); // Sütun adını alın
+
+                            graphics.DrawString(headerToPrint.ToUpper(), font, brush, startX, startY);
+                            startX += 200; // Sütunları ayırmak için 150 birim ilerleyin.
+                        }
+
+                        startY += 20; // Başlık satırını yazdırdıktan sonra alt satıra geçin
+                        startX = 10; // Sütun başına geri dönün.
+
+                        // Verileri yazdırmadan önce bir satır boşluk bırakın
+                        startY += 20;
+
+                        // Verileri okuyarak yazdırın
+                        while (reader.Read())
+                        {
+                            for (int i = 0; i < reader.FieldCount; i++)
+                            {
+                                string dataToPrint = reader[i].ToString();
+                                graphics.DrawString(dataToPrint, font, brush, startX, startY);
+                                startX += 200; // Sütunları ayırmak için 150 birim ilerleyin.
+                            }
+                            startY += 20; // Alt satıra geçmek için 20 birim ilerleyin.
+                            startX = 10; // Sütun başına geri dönün.
+
+                        }
+                    }
+                }
+            }
+
+            using (SqlConnection connection = new SqlConnection("Data Source=FURKAN\\SQLEXPRESS;Initial Catalog = Kasa; Integrated Security = True"))
+            {
+                string query = @"SELECT * FROM CikisTable WHERE CAST(tarih AS DATE) = CAST(GETDATE() AS DATE)";   
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        // Sütun başlıklarını yazdırın
+                        startY += 40;
+                        graphics.DrawString("------ Çıkış Tablosu ------", font, brush, startX, startY);
+                        graphics.DrawString("Günlük Kasa : " + (KasaHesapla()).ToString() + " TL", font, brush, 620, 10);
+                        startY +=40; // Başlık satırını yazdırdıktan sonra alt satıra geçin
+                        startX = 10; // Sütun başına geri dönün.
+                        for (int i = 0; i < reader.FieldCount; i++)
+                        {
+                            string headerToPrint = reader.GetName(i); // Sütun adını alın
+
+                            graphics.DrawString(headerToPrint.ToUpper(), font, brush, startX, startY);
+                            startX += 200; // Sütunları ayırmak için 150 birim ilerleyin.
+                        }
+
+                        startY += 20; // Başlık satırını yazdırdıktan sonra alt satıra geçin
+                        startX = 10; // Sütun başına geri dönün.
+
+                        // Verileri yazdırmadan önce bir satır boşluk bırakın
+                        startY += 20;
+
+                        // Verileri okuyarak yazdırın
+                        while (reader.Read())
+                        {
+                            for (int i = 0; i < reader.FieldCount; i++)
+                            {
+                                string dataToPrint = reader[i].ToString();
+                                graphics.DrawString(dataToPrint, font, brush, startX, startY);
+                                startX += 200; // Sütunları ayırmak için 150 birim ilerleyin.
+                            }
+                            startY += 20; // Alt satıra geçmek için 20 birim ilerleyin.
+                            startX = 10; // Sütun başına geri dönün.
+
+                        }
+                    }
+                }
+                //connection.Close();
+            }
+
+            // Herhangi bir sayfa daha kalmadığını belirtin.
+            //e.HasMorePages = false;
+
+            // Kullanılan nesneleri temizleyin.
+            font.Dispose();
+            brush.Dispose();
+        }
+
+
+        private void yazdir_Button_Click(object sender, EventArgs e)
+        {
+            
+            //PrintGiris();
+            PrintCikis();
+        }
+
+        private void frmDashboard_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Tab)
+            {
+                Control currentControl = sender as Control;
+                if (currentControl != null)
+                {
+                    int currentTabIndex = currentControl.TabIndex;
+                    Control[] tabOrder = this.Controls.OfType<Control>().Where(c => c.TabStop).OrderBy(c => c.TabIndex).ToArray();
+                    int nextIndex = (currentTabIndex + 1) % tabOrder.Length;
+                    tabOrder[nextIndex].Focus();
+                    e.Handled = true; // Tab tuşuna özel işleme devam etmeyi önler
+                }
+            }
         }
     }
 }
